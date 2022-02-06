@@ -25,12 +25,7 @@ if (gender) {
 
 (age > 60) ? pension = "да": pension = "нет";
 
-alert('ваше ФИО: ' + surname + ' ' + userName + ' ' + patronymic +
-  '\nваш возраст в годах: ' + age +
-  '\nваш возраст в днях: ' + (age * 365) +
-  '\nчерез 5 лет вам будет: ' + (age + 5) +
-  '\nваш пол: ' + gender +
-  '\nвы на пенсии: ' + pension);
+alert('ваше ФИО: ' + surname + ' ' + userName + ' ' + patronymic + '\nваш возраст в годах: ' + age + '\nваш возраст в днях: ' + (age * 365) + '\nчерез 5 лет вам будет: ' + (age + 5) + '\nваш пол: ' + gender + '\nвы на пенсии: ' + pension);
 
 function checkTextForm(data, msg, msgDefault) {
   while (!isNaN(data) || data == null) {

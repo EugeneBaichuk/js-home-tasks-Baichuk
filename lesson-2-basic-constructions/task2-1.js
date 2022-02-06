@@ -53,9 +53,4 @@ userData.gender = confirm('Ваш пол мужской?');
 userData.chooseGender();
 userData.isPension();
 
-alert('ваше ФИО: ' + userData.surname + ' ' + userData.userName + ' ' + userData.patronymic +
-  '\nваш возраст в годах: ' + userData.age +
-  '\nваш возраст в днях: ' + (userData.age * 365) +
-  '\nчерез 5 лет вам будет: ' + (userData.age + 5) +
-  '\nваш пол: ' + userData.gender +
-  '\nвы на пенсии: ' + userData.pension);
+alert('ваше ФИО: ' + userData.surname + ' ' + userData.userName + ' ' + userData.patronymic + '\nваш возраст в годах: ' + userData.age + '\nваш возраст в днях: ' + (userData.age * 365) + '\nчерез 5 лет вам будет: ' + (userData.age + 5) + '\nваш пол: ' + userData.gender + '\nвы на пенсии: ' + userData.pension);
