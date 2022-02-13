@@ -1,11 +1,11 @@
 'use strict';
 
 var rowNum = prompt('Введите количество ячеек в строке', 8);
-validateForms(rowNum, 'Введите количество ячеек в строке');
+rowNum = validateForms(rowNum, 'Введите количество ячеек в строке');
 
 if (rowNum) {
   var colNum = prompt('Введите количество столбцов', 8);
-  validateForms(colNum, 'Введите количество столбцов');
+  colNum = validateForms(colNum, 'Введите количество столбцов');
 
   rowNum -= 1;
   colNum = (colNum * 2) - 1;
@@ -26,6 +26,7 @@ function validateForms(value, msg) {
     alert('Требуется ввести числовое значение');
     value = prompt(msg, 8);
   }
+  return value;
 }
 
 function createRowsCols(elemNum, arr, elem, separator) {
