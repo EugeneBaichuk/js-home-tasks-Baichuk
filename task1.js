@@ -18,7 +18,7 @@ var string = createRowsCols(rowNum, rowArr, '#', ' '); //создаем стро
 var grid = createRowsCols(colNum, colArr, string, '\n'); //создаем сетку 
 
 function validateForms(value, msg) {
-  while (!value || isNaN(value)) {
+  while (isNaN(parseFloat(value))) {
     if (value === null) {
       alert('действие отменено!');
       return;
