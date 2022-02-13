@@ -8,7 +8,7 @@ var image = {
 
 function multiplyValues(obj) {
   for (var key in obj) {
-    if (!isNaN(obj[key])) {
+    if (!isNaN(parseFloat(obj[key]))) {
       obj[key] *= 2;
     }
   }

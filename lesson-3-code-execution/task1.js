@@ -7,26 +7,24 @@ var taskCompleted = {
   'Anton': 99
 };
 
-function countBestScore(competitors) {
-  var scores = Object.values(competitors);
-  var bestScore;
-  for (var i = 0; i < scores.length; i++) {
-    bestScore = scores[i];
-    if (scores[i] < scores[i + 1]) {
-      bestScore = scores[i + 1];
+function getWinner(obj) {
+  var bestScore = 0;
+  var winnerName = '';
+
+  for (var person in obj) {
+    if (obj[person] > bestScore) {
+      bestScore = obj[person];
+      winnerName = person;
     }
   }
 
-  for (var person in competitors) {
-    if (competitors[person] === bestScore) {
-      var winner = {};
-      winner[person] = competitors[person];
-      return winner;
-    }
-  }
+  return {
+    [winnerName]: bestScore
+  };
 }
 
-var winner = countBestScore(taskCompleted);
-for (var key in winner) {
-  console.log('Больше всего задач выполнил сотрудник: ' + key + '\nЗадач выполнено: ' + winner[key]);
+var winner = getWinner(taskCompleted);
+
+for (var person in winner) {
+  console.log('Больше всего задач выполнил сотрудник: ' + person + '\nЗадач выполнено: ' + winner[person]);
 }
