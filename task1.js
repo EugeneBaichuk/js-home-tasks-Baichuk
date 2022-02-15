@@ -1,21 +1,21 @@
 'use strict';
+// когда делал задание, не заметил, что должна быть "шахматная сетка", а не просто ряды с решетками. Переделал с учетом сохранения своей логики
 
 var rowNum = prompt('Введите количество ячеек в строке', 8);
-rowNum = validateForms(rowNum, 'Введите количество ячеек в строке');
+validateForms(rowNum, 'Введите количество ячеек в строке');
 
 if (rowNum) {
   var colNum = prompt('Введите количество столбцов', 8);
-  colNum = validateForms(colNum, 'Введите количество столбцов');
+  validateForms(colNum, 'Введите количество столбцов');
 
   rowNum -= 1;
-  colNum = (colNum * 2) - 1;
+  colNum -= 1;
 }
 
 var rowArr = [];
 var colArr = [];
-
-var string = createRowsCols(rowNum, rowArr, '#', ' '); //создаем строку
-var grid = createRowsCols(colNum, colArr, string, '\n'); //создаем сетку 
+var string = createRow(rowNum, rowArr, '#', ' '); //создаем строку
+var grid = createGrid(colNum, colArr, string, '\n'); //создаем сетку 
 
 function validateForms(value, msg) {
   while (isNaN(parseFloat(value))) {
@@ -26,16 +26,21 @@ function validateForms(value, msg) {
     alert('Требуется ввести числовое значение');
     value = prompt(msg, 8);
   }
-  return value;
 }
 
-function createRowsCols(elemNum, arr, elem, separator) {
+function createRow(elemNum, arr, elem, separator) {
   for (var i = 0; i <= elemNum; i++) {
-    if (i % 2 === 0) addElem(arr, elem);
+    if (i % 2 === 0) {
+      arr.push(elem);
+    }
   }
+  return arr.join(separator);
+}
 
-  function addElem(arr, elem) {
-    arr.push(elem);
+function createGrid(elemNum, arr, elem, separator) {
+  for (var i = 0; i <= elemNum; i++) {
+    var newElem = " " + elem;
+    (i % 2 === 0) ? arr.push(elem): arr.push(newElem);
   }
   return arr.join(separator);
 }
