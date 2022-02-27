@@ -2,32 +2,33 @@
 
 (function () {
   function Question(question, answers, correctAnswer) {
-    var self = this;
-    self.question = question;
-    self.answers = answers;
-    self.correctAnswer = correctAnswer;
-    self.userAnswer = null;
-    self.getQuestion = function () {
-      console.log('Question:',
-        self.question
-      );
-      self.answers.forEach((key, i) => {
-        console.log((i + 1) + ') ' + key);
-      });
-    };
-    self.checkAnswer = function () {
-      var correctAnswerNum;
-      self.answers.forEach((key, i) => {
-        if (key === self.correctAnswer) {
-          correctAnswerNum = i + 1;
-        }
-      });
-      if (self.userAnswer === correctAnswerNum) {
-        return true;
-      }
-      return false;
-    };
+    this.question = question;
+    this.answers = answers;
+    this.correctAnswer = correctAnswer;
+    this.userAnswer = null;
   }
+
+  Question.prototype.checkAnswer = function () {
+    var correctAnswerNum;
+    this.answers.forEach((key, i) => {
+      if (key === this.correctAnswer) {
+        correctAnswerNum = i + 1;
+      }
+    });
+    if (this.userAnswer === correctAnswerNum) {
+      return true;
+    }
+    return false;
+  };
+
+  Question.prototype.getQuestion = function () {
+    console.log('Question:',
+      this.question
+    );
+    this.answers.forEach((key, i) => {
+      console.log((i + 1) + ') ' + key);
+    });
+  };
 
   var firstQuestion = new Question(
     'How many letters in the Hawaiian alphabet?',
