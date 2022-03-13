@@ -1,14 +1,14 @@
 'use strict';
 (function () {
   var formArr = [{
-      name: "new-form",
-      className: "form",
-      method: "POST",
-      action: "http://fe.it-academy.by/TestForm.php",
+      name: 'new-form',
+      style: 'display: grid; grid-template-rows: repeat(13, minmax(10px, auto)); grid-template-columns: 200px 500px',
+      method: 'POST',
+      action: 'http://fe.it-academy.by/TestForm.php',
     },
     {
       elemType: 'header',
-      className: 'form__header',
+      style: 'grid-column: 1 / 3; font-weight: normal',
       textContent: 'Для внесения вашего сайта в каталог, заполните форму:',
     },
     {
@@ -128,7 +128,7 @@
     {
       elemType: 'textarea',
       id: 'description',
-      className: 'form__textarea',
+      style: 'grid-column: 1 / 3; margin: 0 0 0.25rem; width: 650px; height: 70px',
       name: 'description',
     },
     {
@@ -143,7 +143,7 @@
     this.htmlForm = document.querySelector('form');
     this.formClone = this.htmlForm.cloneNode(true);
   }
-  //находим нжный объект в массиве formArr 
+  //находим нужный объект в массиве formArr 
   Form.prototype.findCurrentObj = function (attrVal) {
     var result;
     this.arr.forEach(elem => {
@@ -195,7 +195,7 @@
   function Radio(arr) {
     Form.call(this, arr);
   }
-  // наследуемся и для каждого типа элементов задаем свою функцию renderElem, которая рендерит элемент в formClone
+  // наследуемся и для каждого типа элементов задаем свою функцию render, которая рендерит элемент в formClone
   inherit(ChildElem, Form, function (elem, parent, attrVal) {
     var element = document.createElement(elem);
     this.setAttrByValue(element, attrVal);
@@ -220,7 +220,7 @@
     var textArr = this.iterateCurrentObj(currentObj);
     var element = document.createElement(elem);
     textArr.forEach(item => {
-      childElem.renderElem('input', element, 'radio');
+      childElem.render('input', element, 'radio');
       var span = document.createElement('span');
       span.textContent = item;
       element.appendChild(span);
@@ -258,15 +258,15 @@
     [childElem, 'textarea', formClone, 'textarea'],
     [childElem, 'input', formClone, 'submit']
   ];
-  // рендерим все элементы в formClone
+  //создаем все элементы и рендерим в formClone
   formElems.forEach(item => {
-    item[0].renderElem(item[1], item[2], item[3]);
+    item[0].render(item[1], item[2], item[3]);
   });
   form.render(); // рендерим form  на страницу
 
   function inherit(child, parent, func) {
     child.prototype = Object.create(parent.prototype);
     child.prototype.constructor = child;
-    child.prototype.renderElem = func;
+    child.prototype.render = func;
   }
 })();
