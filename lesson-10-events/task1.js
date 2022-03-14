@@ -92,7 +92,7 @@
       id: 'rubric',
       name: 'select',
       style: 'width: 204px',
-      option: ['бытовая техника', 'здоровье', 'домашний уют'],
+      option: ['здоровье', 'домашний уют', 'бытовая техника'],
     },
     {
       elemType: 'radio8line',
@@ -207,11 +207,14 @@
     var textArr = this.iterateCurrentObj(currentObj);
     var element = document.createElement(elem);
     this.setAttrByValue(element, attrVal);
-    textArr.forEach(item => {
+    var childElemsArr = [];
+    textArr.forEach((item, i) => {
       var childElem = document.createElement('option');
       childElem.textContent = item;
+      childElemsArr[i] = childElem;
       element.appendChild(childElem);
     });
+    childElemsArr[(childElemsArr.length) - 1].selected = true;
     parent.appendChild(element);
   });
 
