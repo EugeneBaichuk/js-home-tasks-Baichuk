@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="script.js" defer></script>
+  <style>
+    div {
+      margin: 2rem auto;
+      width: 90%;
+      min-height: 600px;
+      border: 2px solid gray;
+    }
+
+    .start {
+      box-shadow: 0 0 20px rgba(59, 59, 59, 0.3) inset;
+      transition: box-shadow .5s;
+    }
+
+    .end {
+      box-shadow: none;
+      transition: box-shadow .5s;
+    }
+
+    .alarm {
+      border: 2px solid rgb(243, 9, 9);
+      box-shadow: 0 0 40px rgba(243, 9, 9, 0.5) inset;
+      transition: border .5s box-shadow .5s;
+    }
+
+    img {
+      width: 220px;
+      height: 220px;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <img src="котики.jpg">
+    <img src="лисичка.jpg">
+    <img src="енотики.jpg">
+  </div>
+</body>
+</html>
