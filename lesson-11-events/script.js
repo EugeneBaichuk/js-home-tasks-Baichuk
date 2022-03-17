@@ -8,7 +8,6 @@ var startY = 0;
 //устанавливаем стартовое положение картинок 
 imgs.forEach(img => {
   img.style.position = 'absolute';
-  img.classList.add('img');
   img.style.left = (10 + startX) + 'px';
   startX += (10 + img.offsetWidth);
   img.style.top = (10 + startY) + 'px';
@@ -16,25 +15,25 @@ imgs.forEach(img => {
     startX = 0;
     startY += (10 + img.offsetHeight);
   }
-  console.dir(container);
 });
 
 var down = false;
 var xInside, yInside;
 container.addEventListener('mousedown', event => {
-  if (event.target.classList.contains('img')) {
+  if (event.target.tagName === 'IMG') {
     event.preventDefault();
     down = true;
     event.target.style.cursor = 'pointer';
     event.target.style.zIndex = 5;
     xInside = event.pageX - event.target.offsetLeft - event.currentTarget.offsetLeft; //коорд клика внутри img
     yInside = event.pageY - event.target.offsetTop - event.currentTarget.offsetTop;
+    console.dir(event.target);
   }
 });
 
 container.addEventListener('mousemove', event => {
   if (down) {
-    if (event.target.classList.contains('img')) {
+    if (event.target.tagName === 'IMG') {
       event.preventDefault();
       // находим координаты клика внутри container и меняем положение img  
       var insideContainerX = event.pageX - event.currentTarget.offsetLeft - xInside;
