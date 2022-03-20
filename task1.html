@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    #clone-clock {
+      position: relative;
+      margin: 2rem;
+      background-color: #FCCA66;
+      border-radius: 50%;
+
+    }
+
+    .green {
+      position: absolute; 
+      background-color: #48B382; 
+      border-radius: 50%; 
+      width: 40px;
+      height: 40px;
+    }
+
+    .num {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+    }
+
+    #hours{
+      position: absolute;
+      border: 5px solid black;
+      width: 130px;
+      border-radius: 50px;
+      transform-origin: 6% 50%;
+    }
+
+    #minutes{
+      position: absolute;
+      border: 3px solid black;
+      width: 170px;
+      border-radius: 50px;
+      transform-origin: 7% 50%;
+      transition: transform 0.3s;
+    }
+
+    #seconds{
+      position: absolute;
+      border: 1px solid black;
+      width: 190px;
+      border-radius: 50px;
+      transform-origin: 10% 50%;
+    }
+
+    #time {
+      font-size: 2rem;
+      width: fit-content;
+      margin: 0 auto;
+      padding: 7rem 0;
+
+    }
+
+  </style>
+  <script src="task1.js"defer></script>
+</head>
+<body>
+  <div id="clock">
+  </div>
+</body>
+</html>
