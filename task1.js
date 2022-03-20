@@ -1,9 +1,8 @@
 'use strict';
 
-var R = 200; // радиус
+var R = 200; // радиус циферблата
 var clockCenter = R; // центр циферблата
-var elemWidth = 40; // ширина кружочков
-var elemAng = 30; // угол между цифрами в градусах
+var elemR = 20; // радиус кружка сцифрами
 
 var clock = document.getElementById('clock');
 var cloneClock = clock.cloneNode(true);
@@ -36,7 +35,7 @@ for (var num = 1; num <= 12; num++) {
   var green = document.createElement('div');
   green.classList.add('green');
   green.innerHTML = '<p class="num">' + num + '</p>';
-  createNums(num, green, cloneClock, elemWidth, elemAng);
+  createNums(num, green, cloneClock, elemR);
 }
 
 clock.replaceWith(cloneClock);
@@ -47,13 +46,13 @@ function startArrowsPos(arrow, orig) {
   arrow.style.zIndex = 2;
 }
 
-function createNums(num, elem, parent, elemWidth, elemAng) {
-  var Angle = num * elemAng / 360 * 2 * Math.PI;
+function createNums(num, elem, parent, elemR) {
+  var Angle = num / 12 * 2 * Math.PI;
   var elemCenterX = clockCenter + (0.75 * R) * Math.sin(Angle); // 0.75 * R - расстояние от центра до цифр
   var elemCenterY = clockCenter - (0.75 * R) * Math.cos(Angle);
   parent.appendChild(elem);
-  elem.style.left = Math.round(elemCenterX - elemWidth / 2) + 'px';
-  elem.style.top = Math.round(elemCenterY - elemWidth / 2) + 'px';
+  elem.style.left = Math.round(elemCenterX - elemR) + 'px';
+  elem.style.top = Math.round(elemCenterY - elemR) + 'px';
 }
 
 function changeSeconds() {
