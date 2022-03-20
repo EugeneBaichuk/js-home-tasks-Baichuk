@@ -17,45 +17,44 @@ imgs.forEach(img => {
   }
 });
 
-var down = false;
 var xInside, yInside;
 var img;
-container.addEventListener('mousedown', function (event) {
+container.addEventListener('mousedown', mouseDown, false);
+
+function mouseDown(event) {
   img = event.target;
   if (img.tagName === 'IMG') {
     event.preventDefault();
-    down = true;
     img.style.cursor = 'pointer';
-    img.style.zIndex = 5;
+    img.style.zIndex = 5; //картинка падает на самый нижний слой
     xInside = event.pageX - img.offsetLeft - this.offsetLeft; //координаты клика внутри img
     yInside = event.pageY - img.offsetTop - this.offsetTop;
   }
-});
 
-container.addEventListener('mousemove', function (event) {
-  if (down) {
-    if (img.tagName === 'IMG') {
-      event.preventDefault();
-      // находим координаты клика внутри container и меняем положение img  
-      var insideContainerX = event.pageX - this.offsetLeft - xInside;
-      var insideContainerY = event.pageY - this.offsetTop - yInside;
-      img.style.left = insideContainerX + 'px';
-      img.style.top = insideContainerY + 'px';
-      //огр. область перемещения картинок размером контейнера + меняем border у контейнера на красный
-      addAlarm(insideContainerX, insideContainerY, this);
-    }
+  container.addEventListener('mousemove', mouseMove, false);
+  container.addEventListener('mouseup', mouseUp, false);
+}
+
+function mouseMove(event) {
+  if (img.tagName === 'IMG') {
+    event.preventDefault();
+    // находим координаты клика внутри container и меняем положение img  
+    var insideContainerX = event.pageX - this.offsetLeft - xInside;
+    var insideContainerY = event.pageY - this.offsetTop - yInside;
+    img.style.left = insideContainerX + 'px';
+    img.style.top = insideContainerY + 'px';
+    //огр. область перемещения картинок размером контейнера + меняем border у контейнера на красный
+    addAlarm(insideContainerX, insideContainerY, this);
   }
-});
+}
 
-container.addEventListener('mouseup', event => {
+function mouseUp(event) {
   event.preventDefault();
-  down = false;
   img.style.cursor = 'default';
-  imgs.forEach(item => {
-    item.style.zIndex = 1;
-  });
-  img.style.zIndex = 0; //картинка падает на самый нижний слой
-});
+  img.style.zIndex = 1;
+  container.removeEventListener('mousemove', mouseMove);
+  container.removeEventListener('mouseup', mouseUp);
+}
 
 function addAlarm(x, y, container) {
   makeLimits('clientHeight', y, 'top', container);
