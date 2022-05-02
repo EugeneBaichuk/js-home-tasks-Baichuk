@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Encyclopedia</title>
+    <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      .wrapper {
+        width: 100vw;
+      }
+
+      .start-page {
+        margin: 1rem auto;
+        border: 1px solid black;
+        width: 200px;
+        text-align: center;
+        padding: 10px;
+      }
+
+      .second-page {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: center;
+        max-width: 1200px;
+        height: 100vh;
+        margin: 0 auto;  
+      }
+
+      .letter-container {
+        margin: 1rem;
+        min-width: 200px;
+        min-height: 120px;
+      }
+
+      .third-page {
+        display: flex;
+        justify-content: flex-start;
+      }
+
+      .side-menu {
+        margin: 1rem;
+        width: 10%;
+      }
+
+      .current-article {
+        margin: 1rem 2rem;
+        width: 90%;
+      }
+
+
+    </style>
+</head>
+<body>
+    <div class="wrapper" id="page">
+    </div>
+    <script src="loadArticles.js"></script>
+    <script src="task1.js"></script>
+</body>
+</html>
