@@ -1,0 +1,76 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.game {
+  margin: 2rem auto;
+}
+
+.game__header {
+  display: flex;
+  justify-content:space-between;
+}
+
+.game__button {
+  width: 6rem;
+  line-height: 120%;
+  font-size: 1.5rem;
+  background-color: gray;
+  border: none;
+  align-self: flex-end;
+}
+
+.game__score {
+  line-height: 120%;
+  font-size: 3rem;
+}
+
+.game__area {
+  position: relative;
+  margin: 1rem auto;
+  width: 100%;
+  background-color: rgb(215, 240, 164);
+  border: 1px solid black;
+}
+
+.game__rocket {
+  position: absolute;
+  height: 8rem;
+  width: 16px;
+}
+
+.game__rocket_side_left {
+  background-color: blue;
+}
+
+.game__rocket_side_right {
+  background-color: green;
+  left:calc(100% + 1px);
+  transform: translate(-100%, 0);
+}
+
+.game__ball {
+  position: absolute;
+  width: 4rem;
+  height: 4rem;
+  background-color: brown;
+  border: none;
+  border-radius: 50px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.game__scores{
+  display: flex;
+  width: 100px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.game__score-pos {
+  width: 6rem;
+}
+
